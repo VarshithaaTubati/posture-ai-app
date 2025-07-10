@@ -109,10 +109,16 @@ async def analyze_video(file: UploadFile = File(...)):
     bad_frames = 0
     lying_frames = 0
 
+    frame_count = 0
     while True:
         ret, frame = cap.read()
         if not ret:
             break
+
+        frame_count += 1
+        if frame_count % 5 != 0:  # Process every 5th frame
+            continue
+
 
         total_frames += 1
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
