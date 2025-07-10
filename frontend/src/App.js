@@ -22,7 +22,7 @@ function App() {
       if (imageSrc) {
         setIsSending(true);
         try {
-          const response = await axios.post("http://localhost:8000/analyze_webcam", {
+          const response = await axios.post("https://posture-ai-backend.onrender.com/analyze_webcam", {
             image: imageSrc,
           });
 
@@ -65,7 +65,7 @@ function App() {
     formData.append("file", file);
 
     try {
-      const response = await axios.post("http://localhost:8000/analyze", formData, {
+      const response = await axios.post("https://posture-ai-backend.onrender.com/analyze", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
